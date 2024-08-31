@@ -45,12 +45,12 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: url('hero-bg.jpg') no-repeat center center/cover;
+  background: url('ximb new campus.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: blue;
   position: relative;
   overflow: hidden;
 }
