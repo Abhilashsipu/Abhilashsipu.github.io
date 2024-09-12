@@ -11,7 +11,7 @@ body {
 
 /* Navigation Bar */
 header {
-  background: #005f73;
+  background: #fff49b;
   color: #fff;
   padding: 15px 0;
   position: fixed;
@@ -50,7 +50,7 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: blue;
+  color: red;
   position: relative;
   overflow: hidden;
 }
