@@ -88,7 +88,24 @@ nav ul li a:hover {
 .cta-button:hover {
   background: #d43f1a;
 }
+/* Slideshow background */
+.slideshow-background {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  animation: slideShow 10s infinite;
+}
 
+@keyframes slideShow {
+  0%    { background-image: url('https://photos.app.goo.gl/ShN5ttWGsMdBkmiD9'); }
+  50%   { background-image: url('https://photos.app.goo.gl/V2fmrbvyw871RnGM6'); }
+  100%   { background-image: url('https://photos.app.goo.gl/AewMvAEMxAbUpDBD6'); }
+  
+}
 /* About Section */
 .about {
   padding: 60px 20px;
