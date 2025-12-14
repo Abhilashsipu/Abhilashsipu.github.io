@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESL Steel Limited | Integrated Steel Plant</title>
+    <link rel="icon" href="esl_vector.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Global Resets and Utility --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Aesthetic font change */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7; /* Very light background for professionalism */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* --- Buttons & CTAs (Centralized) --- */
+        .primary-button {
+            background-color: #1a4f91; /* Corporate Blue */
+            color: #fff;
+            border: 2px solid #1a4f91;
+            transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(26, 79, 145, 0.2);
+        }
+
+        .primary-button:hover {
+            background-color: #143e74;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(26, 79, 145, 0.3);
+        }
+
+        /* --- Dropdown Menu Logic (Requires <style> block for :hover) --- */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); /* Softer Shadow */
+            z-index: 1001;
+            border-top: 3px solid #1a4f91;
+            padding: 10px 0;
+        }
+
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Products Mega-Menu Specific Styling */
+        .mega-menu-products {
+            min-width: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            display: none !important; 
+        }
+
+        .dropdown-container:hover .mega-menu-products {
+            display: grid !important;
+        }
+
+        .product-link-item {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .product-link-item:hover {
+            background-color: #f0f8ff; /* Very light blue hover */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sub-menu-heading {
+            padding: 10px 20px 5px;
+            font-weight: 600; /* Bolder heading */
+            color: #1a4f91;
+        }
+        
+        /* --- New Metrics Section Styling --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+            margin-top: -80px; /* Pull up to overlap with hero for a dynamic effect */
+            position: relative;
+            z-index: 10;
+        }
+
+        .metric-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); /* Stronger shadow for depth */
+            text-align: center;
+        }
+        
+        .metric-card h3 {
+            font-size: 2.2em;
+            color: #e67e22; /* Use Orange for key numbers */
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .metric-card p {
+            color: #666;
+            font-size: 1em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* --- Product Grid Enhancement --- */
+        .products-section h2 {
+            font-weight: 600;
+        }
+
+        .product-card {
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Corporate Section Image Alignment --- */
+        @media (min-width: 768px) {
+            .main-nav ul {
+                display: flex;
+                gap: 20px;
+            }
+
+            .main-nav li {
+                list-style: none;
+            }
+            
+            .corporate-section .container {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        /* (The rest of your media queries and other CSS blocks remain the same) */
+
+    </style>
+</head>
+<body>
+
+    <header style="
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    ">
+        <div class="container nav-container" style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        ">
+            <div class="logo">
+                <a href="/" style="text-decoration: none;">
+                    <img src="esl_vector.png" alt="ESL Logo" style="height: 45px; width: auto; display: block;">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    /* The rest of the display property is handled by the media query in the <style> block */
+                ">
+                    
+                    <li class="dropdown-container" style="list-style: none;">
+                        <a href="/about" style="color: #333; text-decoration: none; padding: 10px 0; display: block; font-weight: 500;">About Us</a>
+                        <div class="dropdown-content">
+                            <a href="/about-us" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">About Us</a>
+                            <a href="/our-business" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Our Business</a>
+                            <a href="/our-facility" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Our Facility</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown-container" style="position: static; list-style: none;">
+                        <a href="/products" style="color: #333; text-decoration: none; padding: 10px 0; display: block; font-weight: 500;">Our Products</a>
+                        <div class="dropdown-content mega-menu-products" style="
+                            min-width: 600px;
+                            left: 50%;
+                            transform: translateX(-50%); 
+                            padding: 20px;
+                            border-top: 3px solid #e67e22; 
+                        ">
+                            
+                            <div class="product-link-item">
+                                <img src="images/tmt.png" alt="TMT Bars Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/products/tmt" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">TMT</a>
+                            </div>
+                            <div class="product-link-item">
+                                <img src="images/wire-rods.png" alt="Wire Rods Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/products/wire-rods" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">Wire Rods</a>
+                            </div>
+                            <div class="product-link-item">
+                                <img src="images/di-pipes.png" alt="DI Pipes Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/products/di-pipes" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">DI Pipes</a>
+                            </div>
+                            <div class="product-link-item">
+                                <img src="images/pig-iron.png" alt="Pig Iron Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/products/pig-iron" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">Pig Iron</a>
+                            </div>
+                            <div class="product-link-item">
+                                <img src="images/billets.png" alt="Billets Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/products/billets" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">Billets</a>
+                            </div>
+                            <div class="product-link-item">
+                                <img src="images/quality.png" alt="Quality Icon" style="height: 40px; width: auto; margin-bottom: 5px; object-fit: contain;"/>
+                                <a href="/quality" style="padding: 0; display: block; font-weight: 600; color: #1a4f91; text-decoration: none;">Quality</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown-container" style="list-style: none;">
+                        <a href="#" style="color: #333; text-decoration: none; padding: 10px 0; display: block; font-weight: 500;">Reports & Publications</a>
+                        <div class="dropdown-content">
+                            <span class="sub-menu-heading">Reports</span>
+                            <a href="/reports/investor-relations" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Investor Relations</a>
+                            <a href="/reports/esg" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">ESG</a>
+                            <a href="/reports/csr" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">CSR</a>
+                            
+                            <span class="sub-menu-heading" style="border-top: 1px solid #eee; margin-top: 5px;">Publications</span>
+                            <a href="/publications/media" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Media</a>
+                            <a href="/publications/newsletter" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Newsletter</a>
+                            <a href="/publications/eoi" style="color: #333; padding: 10px 20px; text-decoration: none; display: block;">Expressions of Interest (EOI)</a>
+                        </div>
+                    </li>
+
+                    <li style="list-style: none;">
+                        <a href="/contact" style="color: #333; text-decoration: none; padding: 10px 0; display: block; font-weight: 500;">Contact Us!</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 10px;">
+                <input type="search" placeholder="Find Products..." style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 120px;">
+                
+                <a href="/shop-now" style="
+                    background-color: #e67e22; /* High-contrast CTA Orange */
+                    color: #fff;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    transition: background-color 0.3s, transform 0.2s;
+                    border: 2px solid #e67e22;
+                ">Shop Now</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" style="
+        background: url('PLANT.jpg') no-repeat center center/cover;
+        height: 500px; /* Increased height for visual impact */
+        display: flex;
+        align-items: center;
+        color: #fff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 0; /* Remove bottom margin to align with metrics section */
+        position: relative;
+    ">
+        <div class="hero-content" style="max-width: 600px; padding: 0 20px;">
+            <h1 style="font-size: 3em; margin-bottom: 15px; font-weight: 700;">Building From India For the World!!</h1>
+            <p style="font-size: 1.2em; margin-bottom: 25px; font-weight: 300;">Integrated Steel Manufacturing with a Commitment to Quality and a Greener Tomorrow.</p>
+            <a href="/about" class="button primary-button" style="text-decoration: none;">Discover Our Mission</a>
+        </div>
+    </section>
+
+    <section class="metrics-section container">
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>1.5 MTPA</h3>
+                <p>Plant Capacity</p>
+            </div>
+            <div class="metric-card">
+                <h3>20+</h3>
+                <p>Years of Legacy</p>
+            </div>
+            <div class="metric-card">
+                <h3>99.9%</h3>
+                <p>Quality Assurance</p>
+            </div>
+            <div class="metric-card">
+                <h3>$500M+</h3>
+                <p>Annual Exports</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products-section container" style="padding: 40px 0 60px;">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.2em; color: #1a4f91; font-weight: 600;">Our Core Products</h2>
+        <div class="product-grid" style="display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px;">
+            <div class="product-card" style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); text-align: center;">
+                <img data-src="xega_vector.png" alt="V-XEGA TMT Bars" class="lazy-load" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px;">
+                <h3 style="color: #1a4f91; margin-bottom: 5px;">V-XEGA TMT BARS</h3>
+                <p style="color: #666; font-size: 0.95em;">High-strength reinforcement steel for modern infrastructure.</p>
+                <a href="/tmt-bars" class="button primary-button product-button" style="text-decoration: none; margin-top: 15px; padding: 8px 20px; font-size: 0.9em;">View Details</a>
+            </div>
+            <div class="product-card" style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); text-align: center;">
+                <img data-src="images/di-pipes.jpg" alt="V-DUCPIPE DI PIPES" class="lazy-load" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px;">
+                <h3 style="color: #1a4f91; margin-bottom: 5px;">V-DUCPIPE DI PIPES</h3>
+                <p style="color: #666; font-size: 0.95em;">Ductile Iron Pipes for robust water distribution systems.</p>
+                <a href="/di-pipes" class="button primary-button product-button" style="text-decoration: none; margin-top: 15px; padding: 8px 20px; font-size: 0.9em;">View Details</a>
+            </div>
+            <div class="product-card" style="background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); text-align: center;">
+                <img data-src="wirerod-logo.png" alt="V-WIRRO WIRE RODS" class="lazy-load" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px;">
+                <h3 style="color: #1a4f91; margin-bottom: 5px;">V-WIRRO WIRE RODS</h3>
+                <p style="color: #666; font-size: 0.95em;">Quality wire rods for manufacturing and construction applications.</p>
+                <a href="/wire-rods" class="button primary-button product-button" style="text-decoration: none; margin-top: 15px; padding: 8px 20px; font-size: 0.9em;">View Details</a>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="/products" style="
+                text-decoration: none; 
+                display: inline-block;
+                padding: 10px 30px;
+                border: 2px solid #1a4f91;
+                color: #1a4f91;
+                background-color: #fff;
+                border-radius: 4px;
+                font-weight: 600;
+                transition: background-color 0.3s;
+            ">View All Products</a>
+        </div>
+    </section>
+
+    <section class="corporate-section" style="
+        background-color: #fff;
+        padding: 80px 0; /* Increased padding */
+        margin-bottom: 40px;
+    ">
+        <div class="container" style="display: flex; flex-direction: column; gap: 40px;">
+            <div class="text-block" style="flex: 1; max-width: 100%;">
+                <h2 style="color: #1a4f91; margin-bottom: 20px; font-size: 2em; font-weight: 600;">About ESL Steel Limited</h2>
+                <p style="margin-bottom: 25px; font-size: 1.1em; color: #444;">ESL Steel Limited is a greenfield, integrated steel plant in the Bokaro district of Jharkhand. Commissioned at a capacity of 1.5 MTPA, our operations are defined by cutting-edge technology integrated with the highest ecological standards. We are committed to sustainable growth and nation-building.</p>
+                <a href="/about" class="button primary-button" style="text-decoration: none;">Learn More</a>
+            </div>
+            <img data-src="images/plant-overview.jpg" alt="ESL Steel Plant Overview" class="lazy-load wide-image" style="flex: 1; width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px;">
+        </div>
+    </section>
+
+    <footer class="main-footer" style="
+        background-color: #1a4f91;
+        color: #fff;
+        padding: 40px 0 20px;
+        font-size: 0.9em;
+    ">
+        <div class="container footer-grid" style="
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px; 
+            margin-bottom: 30px;
+        ">
+            <div class="footer-col">
+                <h4 style="margin-bottom: 15px; font-size: 1.1em;">Products</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="/tmt" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">TMT Bars</a></li>
+                    <li><a href="/di-pipes" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">DI Pipes</a></li>
+                    <li><a href="/billets" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Billets</a></li>
+                    <li><a href="/pig-iron" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Pig Iron</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 15px; font-size: 1.1em;">Company</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="/careers" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Careers</a></li>
+                    <li><a href="/contact" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Contact Us</a></li>
+                    <li><a href="/media" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Media</a></li>
+                    <li><a href="/eoi" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Expression of Interest</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 15px; font-size: 1.1em;">ESG</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="/sustainability" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Sustainability</a></li>
+                    <li><a href="/csr" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">CSR</a></li>
+                    <li><a href="/quality" style="color: #ccc; text-decoration: none; display: block; margin-bottom: 8px;">Quality & Certifications</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 15px; font-size: 1.1em;">Connect</h4>
+                <p style="margin-bottom: 10px;">Subscribe to our Newsletter for updates.</p>
+                <form class="newsletter-form" style="display: flex;">
+                    <input type="email" placeholder="Enter your email" style="padding: 8px; border: none; border-radius: 4px 0 0 4px; flex-grow: 1;">
+                    <button type="submit" style="padding: 8px 15px; background-color: #e67e22; color: #fff; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid #336699; padding-top: 15px;">
+            <p>&copy; 2025 ESL Steel Limited. All Rights Reserved. | <a href="/privacy" style="color: #ccc; text-decoration: none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+
+            if ('IntersectionObserver' in window) {
+                let observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            let image = entry.target;
+                            image.src = image.dataset.src;
+                            image.classList.remove('lazy-load');
+                            observer.unobserve(image);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(image => {
+                    observer.observe(image);
+                });
+
+            } else {
+                // Fallback for older browsers
+                lazyImages.forEach(image => {
+                    image.src = image.dataset.src;
+                    image.classList.remove('lazy-load');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
